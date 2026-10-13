@@ -8,6 +8,11 @@ FinanceFlow is a web application designed to help users manage their personal fi
 
 **Repository:** https://github.com/dev-ley/FinanceFlow
 
+## Application Preview
+
+![FinanceFlow Dashboard](frontend/public/dashboard.jpeg)
+
+
 ## Features
 
 - **Authentication:** User registration, login, session management, and logout.
