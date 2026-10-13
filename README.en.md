@@ -92,7 +92,7 @@ FinanceFlow/
 
 ## Project Goals
 
-FinanceFlow was developed as a portfolio project to demonstrate practical Full Stack development skills, including:
+FinanceFlow was developed to demonstrate practical Full Stack development skills, including:
 
 - REST API development.
 - Authentication and session management.
