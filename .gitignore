@@ -1,0 +1,6 @@
+
+# Local AI tools
+backend/.agents/
+backend/.claude/
+backend/.windsurf/
+frontend/AGENTS.md
