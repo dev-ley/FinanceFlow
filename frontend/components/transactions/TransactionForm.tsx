@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import type { TransactionType } from "@/lib/finance";
+import "./TransactionForm.css";
 
 type TransactionFormProps = {
   isEditing: boolean;

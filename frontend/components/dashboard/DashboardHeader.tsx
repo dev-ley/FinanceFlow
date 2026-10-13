@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import "./DashboardHeader.css";
 
 type DashboardHeaderProps = {
   userName: string;
@@ -14,49 +15,26 @@ export default function DashboardHeader({
   onLogout,
 }: DashboardHeaderProps) {
   return (
-    <header
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: "18px",
-        marginBottom: "36px",
-      }}
-    >
+    <header className="dashboard-header">
       <Link
         href="/"
-        className="brand"
+        className="dashboard-header__brand"
         aria-label="FinanceFlow — dashboard"
-        style={{ textDecoration: "none" }}
       >
-        <span className="brand-mark">F</span>
+        <span className="dashboard-header__brand-mark">F</span>
         <span>FinanceFlow</span>
       </Link>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "12px",
-          flexWrap: "wrap",
-        }}
-      >
-        <span style={{ color: "#718096", fontSize: "12px" }}>
+      <div className="dashboard-header__actions">
+        <span className="dashboard-header__user-name">
           {userName}
         </span>
 
         <button
-          className="secondary-button"
+          className="secondary-button dashboard-header__logout-button"
           type="button"
           onClick={onLogout}
           disabled={loading}
-          style={{
-            width: "auto",
-            minHeight: "40px",
-            marginTop: 0,
-            padding: "9px 16px",
-          }}
         >
           {loading ? "Saindo..." : "Sair da conta"}
         </button>

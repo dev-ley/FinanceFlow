@@ -1,6 +1,7 @@
 "use client";
 
 import { formatCurrency } from "@/lib/finance";
+import "./SummaryCards.css";
 
 type SummaryCardsProps = {
   balance: number;

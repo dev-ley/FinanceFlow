@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import "./AuthPage.css";
 import { API_URL, getApiError } from "@/lib/finance";
 
 type AuthPageProps = {

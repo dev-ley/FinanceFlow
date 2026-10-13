@@ -1,0 +1,253 @@
+
+/* Lista de transações */
+
+.transaction-list-panel {
+  align-self: start;
+}
+
+.transaction-list-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.transaction-list-header h2 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.transaction-refresh-button {
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.transaction-refresh-button:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: var(--surface-secondary);
+}
+
+.transaction-list-count {
+  margin: 0 0 var(--space-6);
+  color: var(--muted);
+  font-size: var(--font-size-xs);
+}
+
+.transaction-list-loading {
+  padding: var(--space-6) 0;
+  color: var(--muted);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+.transaction-empty-state {
+  padding: 30px var(--space-4);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.transaction-empty-title {
+  margin: 0 0 var(--space-2);
+  color: var(--foreground);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.transaction-empty-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-relaxed);
+}
+
+.transaction-items {
+  min-width: 0;
+}
+
+.transaction-item {
+  min-width: 0;
+  margin: 0 calc(-1 * var(--space-3));
+  padding: var(--space-4) var(--space-3);
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  transition: background var(--transition-fast);
+}
+
+.transaction-item.is-editing {
+  border-radius: var(--radius-lg);
+  background: #f7f5ff;
+}
+
+.transaction-item:last-child {
+  border-bottom-color: transparent;
+}
+
+.transaction-item-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.transaction-item-details {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.transaction-type-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  border-radius: var(--radius-lg);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.transaction-type-icon.is-income {
+  background: var(--success-background);
+  color: var(--success);
+}
+
+.transaction-type-icon.is-expense {
+  background: var(--danger-background);
+  color: var(--danger);
+}
+
+.transaction-item-copy {
+  min-width: 0;
+}
+
+.transaction-item-description {
+  margin: 0 0 5px;
+  color: var(--foreground);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.transaction-item-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.transaction-item-amount {
+  flex: 0 1 auto;
+  min-width: 0;
+  font-size: var(--font-size-xs);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.transaction-item-amount.is-income {
+  color: var(--success);
+}
+
+.transaction-item-amount.is-expense {
+  color: var(--danger);
+}
+
+.transaction-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding-left: 50px;
+}
+
+.transaction-action-button {
+  min-height: 32px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--foreground);
+  font-size: 11px;
+  font-weight: 650;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.transaction-edit-button:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: var(--surface-secondary);
+}
+
+.transaction-edit-button.is-active {
+  border-color: #7567f8;
+  background: #7567f8;
+  color: #fff;
+}
+
+.transaction-delete-button {
+  border-color: #f0d6d3;
+  background: #fffafa;
+  color: var(--danger);
+}
+
+.transaction-delete-button:hover:not(:disabled) {
+  border-color: var(--danger);
+  background: var(--danger-background);
+}
+
+@media (max-width: 520px) {
+  .transaction-item {
+    padding: var(--space-4) var(--space-2);
+  }
+
+  .transaction-item-main {
+    gap: var(--space-2);
+  }
+
+  .transaction-item-details {
+    gap: var(--space-2);
+  }
+
+  .transaction-type-icon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .transaction-item-actions {
+    padding-left: 42px;
+  }
+}
+
+@media (max-width: 360px) {
+  .transaction-item-main {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .transaction-item-amount {
+    padding-left: 42px;
+    text-align: left;
+  }
+
+  .transaction-item-actions {
+    padding-left: 0;
+  }
+}

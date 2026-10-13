@@ -2,6 +2,7 @@
 
 import type { Transaction } from "@/lib/finance";
 import { formatCurrency, formatDate } from "@/lib/finance";
+import "./TransactionList.css";
 
 type TransactionListProps = {
   transactions: Transaction[];
