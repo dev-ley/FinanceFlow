@@ -1,4 +1,9 @@
-export const API_URL = "http://localhost:3000";
+
+const configuredApiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+export const API_URL = (
+  configuredApiUrl || "http://localhost:3000"
+).replace(/\/+$/, "");
 
 export interface User {
   userId?: string;
