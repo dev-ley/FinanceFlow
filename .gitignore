@@ -4,3 +4,6 @@ backend/.agents/
 backend/.claude/
 backend/.windsurf/
 frontend/AGENTS.md
+.neon
+.env.local
+node_modules/

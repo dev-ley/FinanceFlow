@@ -1,4 +1,3 @@
-
 import {
   Body,
   Controller,
@@ -27,6 +26,18 @@ interface AuthenticatedRequest extends Request {
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  private getCookieOptions() {
+    const isProduction = process.env.NODE_ENV === 'production';
+
+    return {
+      httpOnly: true,
+      secure: isProduction,
+      sameSite: (isProduction ? 'none' : 'lax') as 'none' | 'lax',
+      path: '/',
+      maxAge: 24 * 60 * 60 * 1000,
+    };
+  }
+
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
   register(@Body() dto: RegisterDto) {
@@ -42,10 +53,7 @@ export class AuthController {
     const result = await this.authService.login(dto);
 
     response.cookie('accessToken', result.accessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
+      ...this.getCookieOptions(),
       maxAge: result.expiresInSeconds * 1000,
     });
 
@@ -58,11 +66,13 @@ export class AuthController {
   @Post('logout')
   @HttpCode(HttpStatus.OK)
   logout(@Res({ passthrough: true }) response: Response) {
+    const { httpOnly, secure, sameSite, path } = this.getCookieOptions();
+
     response.clearCookie('accessToken', {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
+      httpOnly,
+      secure,
+      sameSite,
+      path,
     });
 
     return {
