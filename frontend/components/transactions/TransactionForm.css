@@ -1,4 +1,11 @@
-/* Formulário de transações */
+
+/**
+ * Estilos exclusivos do formulário de transações do FinanceFlow.
+ * Mantém o visual atual e evita depender dos estilos específicos
+ * da página de autenticação para organizar os campos do formulário.
+ */
+
+/* Painel principal */
 
 .transaction-panel {
   min-width: 0;
@@ -18,6 +25,8 @@
   background: #faf9ff;
   box-shadow: var(--shadow-sm);
 }
+
+/* Cabeçalho */
 
 .transaction-panel-header {
   margin-bottom: var(--space-6);
@@ -42,7 +51,33 @@
   line-height: var(--line-height-normal);
 }
 
-.form-control {
+/* Estrutura independente do formulário */
+
+.transaction-panel .auth-form {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.transaction-panel .field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.transaction-panel .field label {
+  color: #344353;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Campos de texto, valor, data e seleção */
+
+.transaction-panel .field input,
+.transaction-panel .field select {
+  display: block;
   width: 100%;
   min-width: 0;
   max-width: 100%;
@@ -50,6 +85,7 @@
   padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
+  outline: none;
   background: var(--surface);
   color: var(--foreground);
   font-size: var(--font-size-sm);
@@ -58,15 +94,36 @@
     box-shadow var(--transition-normal);
 }
 
-.form-control:focus {
+.transaction-panel .field input::placeholder {
+  color: #a0acb9;
+}
+
+.transaction-panel .field input:focus,
+.transaction-panel .field select:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
-.transaction-cancel-button {
+/* Ajuda abaixo dos campos */
+
+.transaction-panel .field-hint {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* Botões */
+
+.transaction-panel .primary-button {
+  margin-top: 5px;
+}
+
+.transaction-panel .transaction-cancel-button {
   width: 100%;
   margin-top: 0;
 }
+
+/* Responsividade */
 
 @media (max-width: 520px) {
   .transaction-panel {
@@ -74,8 +131,13 @@
     border-radius: var(--radius-lg);
   }
 
-  .form-control {
+  .transaction-panel .field input,
+  .transaction-panel .field select {
     height: 47px;
+  }
+
+  .transaction-panel .auth-form {
+    gap: 17px;
   }
 }
 
